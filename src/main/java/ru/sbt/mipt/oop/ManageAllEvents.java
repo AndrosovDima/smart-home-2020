@@ -1,13 +1,26 @@
 package ru.sbt.mipt.oop;
 
-import static ru.sbt.mipt.oop.GetNextSensorEvent.getNextSensorEvent;
-import static ru.sbt.mipt.oop.ManageEvent.manageEvent;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ManageAllEvents {
-    static void manageAllEvents(SmartHome smartHome, SensorEvent event) {
+public class ManageAllEvents implements AllEventsManagable{
+
+    private final List<Managable> list;
+    private final NextSensorEventGettable nextSensorEventGettable;
+
+    public ManageAllEvents(List<Managable> list, NextSensorEventGettable nextSensorEventGettable) {
+        this.list = list;
+        this.nextSensorEventGettable = nextSensorEventGettable;
+    }
+
+    public void manageAllEvents(SmartHome smartHome) {
+        SensorEvent event = nextSensorEventGettable.getNextSensorEvent();
         while (event != null) {
-            manageEvent(smartHome, event);
-            event = getNextSensorEvent();
+            System.out.println("Got event: " + event);
+            for (Managable elem : list){
+                elem.manage(smartHome, event);
+            }
+            event = nextSensorEventGettable.getNextSensorEvent();
         }
     }
 }

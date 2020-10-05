@@ -1,21 +1,25 @@
 package ru.sbt.mipt.oop;
 
 import java.io.IOException;
-
-import static ru.sbt.mipt.oop.GetNextSensorEvent.getNextSensorEvent;
-import static ru.sbt.mipt.oop.ManageAllEvents.manageAllEvents;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
 
-    public static void main(String... args) throws IOException {
-        // считываем состояние дома из файла
-        SmartHome smartHome = GetSmartHome.getSmartHome();
-        // начинаем цикл обработки событий
-        SensorEvent event = getNextSensorEvent();
-        manageAllEvents(smartHome, event);
+    private final SmartHomeGettable smartHomeGettable;
+
+    public Application(SmartHomeGettable smartHomeGettable) {
+        this.smartHomeGettable = smartHomeGettable;
     }
 
-    static void sendCommand(SensorCommand command) {
-        System.out.println("Pretent we're sending command " + command);
+    public static void main(String... args) throws IOException {
+        List<Managable> allManagable = new ArrayList<>();
+        allManagable.add(new ManageLightEvent());
+        allManagable.add(new ManageDoorEvent());
+        Application application = new Application(new SmartHomeImpl());
+        // считываем состояние дома из файла
+        SmartHome smartHome = application.smartHomeGettable.getSmartHome();
+        // начинаем цикл обработки событий
+        new ManageAllEvents(allManagable, new GetNextSensorEvent()).manageAllEvents(smartHome);
     }
 }
