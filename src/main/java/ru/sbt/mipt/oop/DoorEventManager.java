@@ -3,7 +3,7 @@ package ru.sbt.mipt.oop;
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_OPEN;
 
-public class ManageDoorEvent implements Managable{
+public class DoorEventManager implements DoorsAndLightsManager {
 
     public void manage(SmartHome smartHome, SensorEvent event) {
         if (event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED) {

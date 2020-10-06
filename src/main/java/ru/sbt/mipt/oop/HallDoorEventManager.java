@@ -2,7 +2,7 @@ package ru.sbt.mipt.oop;
 
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;
 
-public class ManageHallDoorEvent implements Managable {
+public class HallDoorEventManager implements DoorsAndLightsManager {
     @Override
     public void manage(SmartHome smartHome, SensorEvent event) {
         if (event.getType() == DOOR_CLOSED){
@@ -32,7 +32,7 @@ public class ManageHallDoorEvent implements Managable {
                 Light light = (Light) obj;
                 light.setOn(false);
                 SensorCommand command = new SensorCommand(CommandType.LIGHT_OFF, light.getId());
-                SendCommand commandSendable = new SendCommand();
+                TestCommandSender commandSendable = new TestCommandSender();
                 commandSendable.sendCommand(command);
             }
         });

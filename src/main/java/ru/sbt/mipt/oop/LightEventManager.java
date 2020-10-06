@@ -3,7 +3,7 @@ package ru.sbt.mipt.oop;
 import static ru.sbt.mipt.oop.SensorEventType.LIGHT_OFF;
 import static ru.sbt.mipt.oop.SensorEventType.LIGHT_ON;
 
-public class ManageLightEvent implements Managable{
+public class LightEventManager implements DoorsAndLightsManager {
 
     public void manage(SmartHome smartHome, SensorEvent event) {
         if (event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) {

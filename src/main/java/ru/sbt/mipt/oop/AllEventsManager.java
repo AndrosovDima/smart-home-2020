@@ -1,15 +1,14 @@
 package ru.sbt.mipt.oop;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ManageAllEvents implements AllEventsManagable{
+public class AllEventsManager implements AllEventsManagable{
 
-    private final List<Managable> list;
+    private final List<DoorsAndLightsManager> managersList;
     private final NextSensorEventGettable nextSensorEventGettable;
 
-    public ManageAllEvents(List<Managable> list, NextSensorEventGettable nextSensorEventGettable) {
-        this.list = list;
+    public AllEventsManager(List<DoorsAndLightsManager> list, NextSensorEventGettable nextSensorEventGettable) {
+        this.managersList = list;
         this.nextSensorEventGettable = nextSensorEventGettable;
     }
 
@@ -17,7 +16,7 @@ public class ManageAllEvents implements AllEventsManagable{
         SensorEvent event = nextSensorEventGettable.getNextSensorEvent();
         while (event != null) {
             System.out.println("Got event: " + event);
-            for (Managable elem : list){
+            for (DoorsAndLightsManager elem : managersList){
                 elem.manage(smartHome, event);
             }
             event = nextSensorEventGettable.getNextSensorEvent();

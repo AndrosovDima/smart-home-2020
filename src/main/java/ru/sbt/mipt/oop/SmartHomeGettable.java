@@ -1,5 +1,5 @@
 package ru.sbt.mipt.oop;
 
 public interface SmartHomeGettable {
-    SmartHome getSmartHome();
+    SmartHome loadHome();
 }
