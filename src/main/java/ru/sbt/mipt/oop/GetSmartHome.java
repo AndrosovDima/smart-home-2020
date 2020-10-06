@@ -6,11 +6,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class GetSmartHome {
+public class GetSmartHome implements SmartHomeGettable {
     // считываем состояние дома из файла
-    static SmartHome getSmartHome() throws IOException {
+    public SmartHome getSmartHome() {
         Gson gson = new Gson();
-        String json = new String(Files.readAllBytes(Paths.get("smart-home-1.js")));
+        String json = null;
+        try {
+            json = new String(Files.readAllBytes(Paths.get("smart-home-1.js")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         SmartHome smartHome = gson.fromJson(json, SmartHome.class);
         return smartHome;
     }
