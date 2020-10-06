@@ -18,14 +18,7 @@ public class ManageDoorEvent implements DoorsAndLightsManager {
                             System.out.println("Door " + door.getId() + " in room " + room.getName() + " was closed.");
 
                             if (room.getName().equals("hall")) {
-                                for (Room homeRoom : smartHome.getRooms()) {
-                                    for (Light light : homeRoom.getLights()) {
-                                        light.setOn(false);
-                                        SensorCommand command = new SensorCommand(CommandType.LIGHT_OFF, light.getId());
-                                        TestCommandSender commandSendable = new TestCommandSender();
-                                        commandSendable.sendCommand(command);
-                                    }
-                                }
+                                new ManageLightEvent().AllLightOffMaker(smartHome);
                             }
                         }
                     }
