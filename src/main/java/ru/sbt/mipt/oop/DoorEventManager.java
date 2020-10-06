@@ -3,7 +3,7 @@ package ru.sbt.mipt.oop;
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_OPEN;
 
-public class ManageDoorEvent implements DoorsAndLightsManager {
+public class DoorEventManager implements DoorsAndLightsManager {
 
     public void manage(SmartHome smartHome, SensorEvent event) {
         if (event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED) {
@@ -18,7 +18,7 @@ public class ManageDoorEvent implements DoorsAndLightsManager {
                             System.out.println("Door " + door.getId() + " in room " + room.getName() + " was closed.");
 
                             if (room.getName().equals("hall")) {
-                                new ManageLightEvent().AllLightOffMaker(smartHome);
+                                new LightEventManager().AllLightOffMaker(smartHome);
                             }
                         }
                     }

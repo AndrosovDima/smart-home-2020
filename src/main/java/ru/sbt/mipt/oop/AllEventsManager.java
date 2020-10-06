@@ -2,12 +2,12 @@ package ru.sbt.mipt.oop;
 
 import java.util.List;
 
-public class ManageAllEvents implements AllEventsManagable{
+public class AllEventsManager implements AllEventsManagable{
 
     private final List<DoorsAndLightsManager> managersList;
     private final NextSensorEventGettable nextSensorEventGettable;
 
-    public ManageAllEvents(List<DoorsAndLightsManager> managersList, NextSensorEventGettable nextSensorEventGettable) {
+    public AllEventsManager(List<DoorsAndLightsManager> managersList, NextSensorEventGettable nextSensorEventGettable) {
         this.managersList = managersList;
         this.nextSensorEventGettable = nextSensorEventGettable;
     }

@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class GetSmartHome implements SmartHomeGettable{
+public class SmartHomeGetter implements SmartHomeGettable{
     // считываем состояние дома из файла
     public SmartHome loadHome(){
         Gson gson = new Gson();
