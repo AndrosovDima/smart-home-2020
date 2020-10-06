@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class GetSmartHome implements SmartHomeGettable{
     // считываем состояние дома из файла
-    public SmartHome getSmartHome(){
+    public SmartHome loadHome(){
         Gson gson = new Gson();
         String json = null;
         try {

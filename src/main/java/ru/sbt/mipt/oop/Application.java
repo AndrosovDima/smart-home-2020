@@ -13,13 +13,13 @@ public class Application {
     }
 
     public static void main(String... args) throws IOException {
-        List<Managable> allManagable = new ArrayList<>();
-        allManagable.add(new ManageLightEvent());
-        allManagable.add(new ManageDoorEvent());
+        List<DoorsAndLightsManager> allDoorsAndLightsManager = new ArrayList<>();
+        allDoorsAndLightsManager.add(new ManageLightEvent());
+        allDoorsAndLightsManager.add(new ManageDoorEvent());
         Application application = new Application(new GetSmartHome());
         // считываем состояние дома из файла
-        SmartHome smartHome = application.smartHomeGettable.getSmartHome();
+        SmartHome smartHome = application.smartHomeGettable.loadHome();
         // начинаем цикл обработки событий
-        new ManageAllEvents(allManagable, new GetNextSensorEvent()).manageAllEvents(smartHome);
+        new ManageAllEvents(allDoorsAndLightsManager, new GetNextSensorEvent()).manageAllEvents(smartHome);
     }
 }
