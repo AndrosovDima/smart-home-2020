@@ -16,7 +16,7 @@ public class Application {
         List<Managable> allManagable = new ArrayList<>();
         allManagable.add(new ManageLightEvent());
         allManagable.add(new ManageDoorEvent());
-        Application application = new Application(new SmartHomeImpl());
+        Application application = new Application(new GetSmartHome());
         // считываем состояние дома из файла
         SmartHome smartHome = application.smartHomeGettable.getSmartHome();
         // начинаем цикл обработки событий
