@@ -1,6 +1,6 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.main;
 
-import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;
+import static ru.sbt.mipt.oop.main.SensorEventType.DOOR_CLOSED;
 
 public class HallDoorEventManager implements DoorsAndLightsManager {
     @Override

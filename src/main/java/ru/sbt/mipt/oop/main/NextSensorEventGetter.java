@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.main;
 
 public class NextSensorEventGetter implements NextSensorEventGettable{
     public SensorEvent getNextSensorEvent() {

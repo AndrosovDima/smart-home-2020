@@ -1,6 +1,7 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.test;
 
 import org.junit.jupiter.api.Test;
+import ru.sbt.mipt.oop.main.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
