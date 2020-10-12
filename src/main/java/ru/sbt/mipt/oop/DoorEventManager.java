@@ -16,10 +16,6 @@ public class DoorEventManager implements EventHandler {
                         } else {
                             door.setOpen(false);
                             System.out.println("Door " + door.getId() + " in room " + room.getName() + " was closed.");
-
-                            if (room.getName().equals("hall")) {
-                                new AllLightOffMaker().allLightOffMaker(smartHome);
-                            }
                         }
                     }
                 }

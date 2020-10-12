@@ -16,6 +16,7 @@ public class Application {
         List<EventHandler> allEventHandler = new ArrayList<>();
         allEventHandler.add(new LightEventManager());
         allEventHandler.add(new DoorEventManager());
+        allEventHandler.add(new HallDoorEventManager());
         Application application = new Application(new SmartHomeGetter());
         // считываем состояние дома из файла
         SmartHome smartHome = application.smartHomeGettable.loadHome();
