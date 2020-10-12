@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LightEventManagerTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testsManageForLight_returnsTrue_whenLightTurnsOff() {
         // given
         List<DoorsAndLightsManager> allDoorsAndLightsManager = new ArrayList<>();
