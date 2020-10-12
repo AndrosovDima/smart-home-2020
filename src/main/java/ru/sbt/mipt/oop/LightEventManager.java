@@ -3,7 +3,7 @@ package ru.sbt.mipt.oop;
 import static ru.sbt.mipt.oop.SensorEventType.LIGHT_OFF;
 import static ru.sbt.mipt.oop.SensorEventType.LIGHT_ON;
 
-public class LightEventManager implements DoorsAndLightsManager {
+public class LightEventManager implements EventHandler {
 
     public void manage(SmartHome smartHome, SensorEvent event) {
         if (event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) {
@@ -19,17 +19,6 @@ public class LightEventManager implements DoorsAndLightsManager {
                         }
                     }
                 }
-            }
-        }
-    }
-
-    public void AllLightOffMaker(SmartHome smartHome) {
-        for (Room homeRoom : smartHome.getRooms()) {
-            for (Light light : homeRoom.getLights()) {
-                light.setOn(false);
-                SensorCommand command = new SensorCommand(CommandType.LIGHT_OFF, light.getId());
-                TestCommandSender commandSendable = new TestCommandSender();
-                commandSendable.sendCommand(command);
             }
         }
     }
