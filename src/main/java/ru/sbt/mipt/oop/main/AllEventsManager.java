@@ -4,22 +4,22 @@ import java.util.List;
 
 public class AllEventsManager implements AllEventsManagable{
 
-    private final List<DoorsAndLightsManager> managersList;
-    private final NextSensorEventGettable nextSensorEventGettable;
+    private final List<EventHandler> managersList;
+    private final EventGenerator eventGenerator;
 
-    public AllEventsManager(List<DoorsAndLightsManager> list, NextSensorEventGettable nextSensorEventGettable) {
+    public AllEventsManager(List<EventHandler> list, EventGenerator eventGenerator) {
         this.managersList = list;
-        this.nextSensorEventGettable = nextSensorEventGettable;
+        this.eventGenerator = eventGenerator;
     }
 
     public void manageAllEvents(SmartHome smartHome) {
-        SensorEvent event = nextSensorEventGettable.getNextSensorEvent();
+        SensorEvent event = eventGenerator.getNextSensorEvent();
         while (event != null) {
             System.out.println("Got event: " + event);
-            for (DoorsAndLightsManager elem : managersList){
+            for (EventHandler elem : managersList){
                 elem.manage(smartHome, event);
             }
-            event = nextSensorEventGettable.getNextSensorEvent();
+            event = eventGenerator.getNextSensorEvent();
         }
     }
 }
