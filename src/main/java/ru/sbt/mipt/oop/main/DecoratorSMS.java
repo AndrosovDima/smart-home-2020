@@ -12,12 +12,10 @@ public class DecoratorSMS implements EventHandler {
     @Override
     public void manage(SmartHome smartHome, SensorEvent event) {
         Signaling signaling = smartHome.signaling;
-        if (signaling.getState() instanceof AlarmState) return;
-        if((event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED ||
-            event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) &&
-                ((!(signaling.getState() instanceof ActiveState)) || (!(signaling.getState() instanceof AlarmState)))) {
+        if((signaling.getState() instanceof NonActiveState)) {
             eventHandler.manage(smartHome, event);
-        } else{
+        } else if (event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED ||
+                event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF){
             System.out.println("Sending sms");
         }
     }
