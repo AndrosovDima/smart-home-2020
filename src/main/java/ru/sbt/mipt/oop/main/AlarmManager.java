@@ -10,9 +10,9 @@ public class AlarmManager implements EventHandler {
                 if(obj instanceof Signaling){
                     Signaling signaling = (Signaling) obj;
                     if (event.getType() == ALARM_ACTIVATE) {
-                        signaling.activateSignaling(event.getType().getCode());
+                        signaling.activateSignaling(event.getCode());
                     } else {
-                        signaling.deactivateSignaling(event.getType().getCode());
+                        signaling.deactivateSignaling(event.getCode());
                     }
                 }
             });
