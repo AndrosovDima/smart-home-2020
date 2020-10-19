@@ -1,7 +1,7 @@
 package ru.sbt.mipt.oop.main;
 
 public class ActiveState implements SignalingState {
-    private transient final Signaling signaling;
+    private final Signaling signaling;
 
     public ActiveState(Signaling signaling) {
         this.signaling = signaling;
@@ -14,15 +14,19 @@ public class ActiveState implements SignalingState {
 
     @Override
     public void deactivateSignaling(String activatingCode) {
-        if (activatingCode.equals(signaling.getCode())){
+        if (activatingCode.equals(signaling.getCode()) || signaling.getCode() == null){
             signaling.changeState(new NonActiveState(signaling));
             signaling.setCode(null);
             System.out.println("Signaling has been deactivated");
-        } else if (signaling.getState() instanceof ActiveState){
+        } else {
             signaling.changeState(new AlarmState(signaling));
             System.out.println("ALARM_STATE");
-        } else {
-            System.out.println("ALARM_STATE");
         }
+    }
+
+    @Override
+    public void turnOnAlarmState() {
+        signaling.changeState(new AlarmState(signaling));
+        System.out.println("ALARM_STATE");
     }
 }

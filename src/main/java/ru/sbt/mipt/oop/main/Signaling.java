@@ -2,7 +2,7 @@ package ru.sbt.mipt.oop.main;
 
 public class Signaling implements Actionable{
     private SignalingState state;
-    private String code;
+    private String code = null;
 
     public Signaling() {
         this.state = new NonActiveState(this);
@@ -33,8 +33,7 @@ public class Signaling implements Actionable{
     }
 
     public void turnOnAlarmState(){
-        this.changeState(new AlarmState(this));
-        System.out.println("ALARM_STATE");
+        state.turnOnAlarmState();
     }
 
     @Override

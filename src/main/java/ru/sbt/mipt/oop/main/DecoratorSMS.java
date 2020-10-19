@@ -14,8 +14,8 @@ public class DecoratorSMS implements EventHandler {
         Signaling signaling = smartHome.signaling;
         if((signaling.getState() instanceof NonActiveState)) {
             eventHandler.manage(smartHome, event);
-        } else if (event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED ||
-                event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF){
+        }
+        if (!(event.getType() == ALARM_ACTIVATE || event.getType() == ALARM_DEACTIVATE)){
             System.out.println("Sending sms");
         }
     }
