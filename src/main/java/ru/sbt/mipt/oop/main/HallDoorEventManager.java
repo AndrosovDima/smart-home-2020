@@ -2,7 +2,7 @@ package ru.sbt.mipt.oop.main;
 
 import static ru.sbt.mipt.oop.main.SensorEventType.DOOR_CLOSED;
 
-public class HallDoorEventManager implements DoorsAndLightsManager {
+public class HallDoorEventManager implements EventHandler {
     @Override
     public void manage(SmartHome smartHome, SensorEvent event) {
         if (event.getType() == DOOR_CLOSED){

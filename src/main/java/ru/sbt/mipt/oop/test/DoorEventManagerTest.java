@@ -13,9 +13,9 @@ class DoorEventManagerTest {
     @Test
     void testsManageForDoor_returnsTrue_whenDoorCloses() {
         // given
-        List<DoorsAndLightsManager> allDoorsAndLightsManager = new ArrayList<>();
-        allDoorsAndLightsManager.add(new LightEventManager());
-        allDoorsAndLightsManager.add(new DoorEventManager());
+        List<EventHandler> allEventHandler = new ArrayList<>();
+        allEventHandler.add(new LightEventManager());
+        allEventHandler.add(new DoorEventManager());
         SmartHome smartHome = new SmartHome();
         Door door = new Door(true, "1");
         ArrayList<Door> doors = new ArrayList<>();
@@ -23,7 +23,7 @@ class DoorEventManagerTest {
         Room room = new Room(new ArrayList<Light>(), doors, "kitchen");
         smartHome.addRoom(room);
         SensorEvent event = new SensorEvent(SensorEventType.DOOR_CLOSED, "1");
-        for (DoorsAndLightsManager elem : allDoorsAndLightsManager){
+        for (EventHandler elem : allEventHandler){
             elem.manage(smartHome, event);
         }
         // when
@@ -35,10 +35,10 @@ class DoorEventManagerTest {
     @Test
     void testsManageForDoor_returnsTrue_whenDoorOpens() {
         // given
-        List<DoorsAndLightsManager> allDoorsAndLightsManager = new ArrayList<>();
-        allDoorsAndLightsManager.add(new LightEventManager());
-        allDoorsAndLightsManager.add(new DoorEventManager());
-        allDoorsAndLightsManager.add(new HallDoorEventManager());
+        List<EventHandler> allEventHandler = new ArrayList<>();
+        allEventHandler.add(new LightEventManager());
+        allEventHandler.add(new DoorEventManager());
+        allEventHandler.add(new HallDoorEventManager());
         SmartHome smartHome = new SmartHome();
         Door door = new Door(false, "1");
         ArrayList<Door> doors = new ArrayList<>();
@@ -46,7 +46,7 @@ class DoorEventManagerTest {
         Room room = new Room(new ArrayList<Light>(), doors, "kitchen");
         smartHome.addRoom(room);
         SensorEvent event = new SensorEvent(SensorEventType.DOOR_OPEN, "1");
-        for (DoorsAndLightsManager elem : allDoorsAndLightsManager){
+        for (EventHandler elem : allEventHandler){
             elem.manage(smartHome, event);
         }
         // when
