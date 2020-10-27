@@ -14,7 +14,7 @@ public class ActiveState implements SignalingState {
 
     @Override
     public void deactivateSignaling(String activatingCode) {
-        if (activatingCode.equals(signaling.getCode()) || signaling.getCode() == null){
+        if (activatingCode != null && activatingCode.equals(signaling.getCode()) || signaling.getCode() == null){
             signaling.changeState(new NonActiveState(signaling));
             signaling.setCode(null);
             System.out.println("Signaling has been deactivated");

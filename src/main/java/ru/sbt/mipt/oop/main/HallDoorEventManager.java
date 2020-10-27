@@ -1,7 +1,10 @@
 package ru.sbt.mipt.oop.main;
 
+import org.springframework.stereotype.Component;
+
 import static ru.sbt.mipt.oop.main.SensorEventType.DOOR_CLOSED;
 
+@Component
 public class HallDoorEventManager implements EventHandler {
     @Override
     public void manage(SmartHome smartHome, SensorEvent event) {
