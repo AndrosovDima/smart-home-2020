@@ -16,8 +16,8 @@ public class Application {
     public static void main(String... args) throws IOException {
         List<EventHandler> allEventHandler = new ArrayList<>(Arrays.asList(new AlarmManager(),
                                                                 new DecoratorAlarm(new DecoratorSMS(new LightEventManager())),
-                                                                new DecoratorAlarm(new DecoratorSMS(new DoorEventManager())),
-                                                                new DecoratorAlarm(new DecoratorSMS(new HallDoorEventManager()))));
+                                                                new DecoratorAlarm(new DoorEventManager()),
+                                                                new DecoratorAlarm(new HallDoorEventManager())));
         Application application = new Application(new SmartHomeGetter());
         // считываем состояние дома из файла
         SmartHome smartHome = application.smartHomeGettable.loadHome();
