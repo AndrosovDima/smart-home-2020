@@ -1,9 +1,11 @@
 package ru.sbt.mipt.oop.main;
 
+import org.springframework.stereotype.Component;
+
 import static ru.sbt.mipt.oop.main.SensorEventType.LIGHT_OFF;
 import static ru.sbt.mipt.oop.main.SensorEventType.LIGHT_ON;
 
-public class LightEventManager implements DoorsAndLightsManager {
+public class LightEventManager implements EventHandler {
 
     public void manage(SmartHome smartHome, SensorEvent event) {
         if (event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) {
