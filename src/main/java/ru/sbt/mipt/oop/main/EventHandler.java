@@ -1,5 +1,5 @@
 package ru.sbt.mipt.oop.main;
 
-public interface DoorsAndLightsManager {
+public interface EventHandler {
     void manage(SmartHome smartHome, SensorEvent event);
 }

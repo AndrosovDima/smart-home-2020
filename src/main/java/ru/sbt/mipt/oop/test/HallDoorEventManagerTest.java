@@ -14,10 +14,10 @@ class HallDoorEventManagerTest {
     @Test
     void testsManageForHallDoor_returnsTrue_whenAllLightTirnsOffIfDoorIsInHall() {
         // given
-        List<DoorsAndLightsManager> allDoorsAndLightsManager = new ArrayList<>();
-        allDoorsAndLightsManager.add(new LightEventManager());
-        allDoorsAndLightsManager.add(new DoorEventManager());
-        allDoorsAndLightsManager.add(new HallDoorEventManager());
+        List<EventHandler> allEventHandler = new ArrayList<>();
+        allEventHandler.add(new LightEventManager());
+        allEventHandler.add(new DoorEventManager());
+        allEventHandler.add(new HallDoorEventManager());
         Room kitchen = new Room(Arrays.asList(new Light("1", false), new Light("2", true)),
                 Arrays.asList(new Door(false, "1")),
                 "kitchen");
@@ -32,7 +32,7 @@ class HallDoorEventManagerTest {
                 "hall");
         SmartHome smartHome = new SmartHome(Arrays.asList(kitchen, bathroom, bedroom, hall));
         SensorEvent event = new SensorEvent(SensorEventType.DOOR_CLOSED, "4");
-        for (DoorsAndLightsManager elem : allDoorsAndLightsManager){
+        for (EventHandler elem : allEventHandler){
             elem.manage(smartHome, event);
         }
         // when
@@ -52,10 +52,10 @@ class HallDoorEventManagerTest {
     @Test
     void testsManageForHallDoor_returnsTrue_whenClosesHallDoorIfDoorIsInHall() {
         // given
-        List<DoorsAndLightsManager> allDoorsAndLightsManager = new ArrayList<>();
-        allDoorsAndLightsManager.add(new LightEventManager());
-        allDoorsAndLightsManager.add(new DoorEventManager());
-        allDoorsAndLightsManager.add(new HallDoorEventManager());
+        List<EventHandler> allEventHandler = new ArrayList<>();
+        allEventHandler.add(new LightEventManager());
+        allEventHandler.add(new DoorEventManager());
+        allEventHandler.add(new HallDoorEventManager());
         Room kitchen = new Room(Arrays.asList(new Light("1", false), new Light("2", true)),
                 Arrays.asList(new Door(false, "1")),
                 "kitchen");
@@ -70,7 +70,7 @@ class HallDoorEventManagerTest {
                 "hall");
         SmartHome smartHome = new SmartHome(Arrays.asList(kitchen, bathroom, bedroom, hall));
         SensorEvent event = new SensorEvent(SensorEventType.DOOR_CLOSED, "4");
-        for (DoorsAndLightsManager elem : allDoorsAndLightsManager){
+        for (EventHandler elem : allEventHandler){
             elem.manage(smartHome, event);
         }
         // when

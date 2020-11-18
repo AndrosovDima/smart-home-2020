@@ -1,5 +1,5 @@
 package ru.sbt.mipt.oop.main;
 
-public interface NextSensorEventGettable {
+public interface EventGenerator {
     SensorEvent getNextSensorEvent();
 }
