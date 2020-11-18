@@ -64,14 +64,14 @@ public class MyConfiguration {
     }
 
     @Bean
-    public RemoteControlRegistry getRemoteControlRegistry(Collection<RemoteControl> remoteControllers) {
+    public RemoteControlRegistry remoteControlRegistry(Collection<RemoteControl> remoteControllers) {
         RemoteControlRegistry remoteControlRegistry = new RemoteControlRegistry();
         remoteControllers.forEach(remoteControlRegistry::registerRemoteControl);
         return remoteControlRegistry;
     }
 
     @Bean
-    public RemoteControlImplForSmartHome getRemoteControlForSmartHome(Map<String, RemoteCommand> buttons) {
+    public RemoteControlImplForSmartHome remoteControlForSmartHome(Map<String, RemoteCommand> buttons) {
         return new RemoteControlImplForSmartHome(buttons);
     }
 
