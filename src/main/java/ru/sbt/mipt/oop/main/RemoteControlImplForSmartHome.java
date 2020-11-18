@@ -7,13 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 public class RemoteControlImplForSmartHome implements RemoteControl {
-    private final Map<String, RemoteCommand> buttons = new HashMap<>();
-    private final List<String> coddingNames = List.of("A", "B", "C", "D", "1", "2", "3", "4");;
+    private final Map<String, RemoteCommand> buttons;
 
-    public void setButton(String buttonCode, RemoteCommand command) {
-        if (coddingNames.contains(buttonCode)) {
-            buttons.put(buttonCode, command);
-        }
+    public RemoteControlImplForSmartHome(Map<String, RemoteCommand> buttons) {
+        this.buttons = buttons;
     }
 
     @Override
